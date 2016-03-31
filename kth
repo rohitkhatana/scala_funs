@@ -1,0 +1,22 @@
+object kth {
+
+  def kthElement[A](n: Int, l: List[A]): A = (n, l) match {
+    case (0, h :: _) => h
+    case(n, l :: tail) => kthElement(n-1, tail)
+    case (_, Nil) => throw new NoSuchElementException
+  }
+
+  def kth1[A](n: Int, l: List[A]): A = {
+    if(n > l.size){
+      throw new NoSuchElementException
+    } else {
+      l(n)
+    }
+  }
+
+  def main(args: Array[String]) {
+    val l = List(1, 2, 3, 4)
+    println(kthElement(1, l))
+    println(kth1(1, l))
+  }
+}
